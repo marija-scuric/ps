@@ -10,35 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_05_144847) do
-  create_table "characterizations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "genre_id", null: false
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_144847) do
+  create_table "characterizations", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "genre_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_characterizations_on_genre_id"
     t.index ["movie_id"], name: "index_characterizations_on_movie_id"
   end
 
-  create_table "favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.bigint "user_id", null: false
+  create_table "favorites", force: :cascade do |t|
+    t.integer "movie_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_favorites_on_movie_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "genres", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "movies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "rating"
-    t.decimal "total_gross", precision: 10
+    t.decimal "total_gross"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
@@ -49,17 +49,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_144847) do
     t.string "slug"
   end
 
-  create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "reviews", force: :cascade do |t|
     t.integer "stars"
     t.text "comment"
-    t.bigint "movie_id", null: false
+    t.integer "movie_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["movie_id"], name: "index_reviews_on_movie_id"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"
