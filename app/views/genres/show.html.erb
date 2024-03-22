@@ -1,0 +1,20 @@
+<h1><%= @genre.name %></h1>
+
+<h2>Movies in this Genre:</h2>
+<ul>
+  <% @movies.each do |movie| %>
+  <section class="movie">
+    <div class="image">
+      <%= image_tag movie.image_file_name %>
+    </div>
+    <h2><%= link_to(movie.title, movie_path(movie)) %></h2>
+    </section>
+  <% end %>
+</ul>
+<% if signed_in_admin? %>
+  <section class="admin">
+    <%= link_to("All Genres", genres_path, class: "button") %>
+    <%= link_to("Create a genre", new_genre_path, class: "button") %>
+    <%= link_to("Delete genre", genre_path(@genre), class: "button", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }) %>
+  </section>
+<% end %>

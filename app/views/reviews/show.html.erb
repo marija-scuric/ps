@@ -1,0 +1,3 @@
+<%= @review.name %>
+  <%= link_to("Edit", edit_movie_review_path(@movie, @review), class: "button") %>
+      <%= button_to "Delete review", movie_review_path(@movie, @review), method: :delete, turbo: false, class: "button"%>
