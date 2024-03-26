@@ -24,7 +24,7 @@
         <%= link_to signed_in_user.name, signed_in_user %>
       </li>
       <li>
-        <%= link_to "Account Settings", edit_user_path(current_user) %>
+        <%= link_to "Account Settings", edit_user_path(signed_in_user) %>
       </li>
       <li>
         <%= link_to "Sign Out", session_path,
